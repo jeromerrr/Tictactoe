@@ -45,29 +45,62 @@ import Board from './components/board.js'
   //Form field to take player's icon and store it in player's array
 
 class App extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      turnPointer: 1,
+      playerArray: ["X","O"]
+    }
+  }
+  changePlayer(){
+    let temp = this.state.turnPointer
+    console.log(temp)
+    temp = temp ? 0 : 1
+    this.setState({turnPointer: temp})
+    console.log(temp + ' not');
+    console.log(this.state.turnPointer);
+  }
+
+  setIcon(e, index){
+    // let tempIcons = this.state.playerArray.slice()
+    // tempIcons[index]= e.target.value
+    // this.setState({playerArray: tempIcons})
+  }
+
   render() {
     return (
       <div className="App">
-        <Title />
+
+        <h1 className="Title">
+          Tic Tac Toe!
+        </h1>
+
         <div className="PlayerHolder">
-          <Player className="PlayerOne" />
-          <Player className="PlayerTwo" />
+
+          <div className="Player" id="playerOne" >
+            <input className="icon" id="p1icon" value={this.state.playerArray[0]}
+            onChange={this.setIcon.bind(this, 0)}
+            index={0}/>
+            <p> Player One </p>
+          </div>
+
+          <div className="Player" id="playerTwo">
+            <input className="icon" id="p2icon" value={this.state.playerArray[1]} onChange={this.setIcon.bind(this, 1)}
+            index="1" />
+            <p> Player Two </p>
+          </div>
+
         </div>
-        <div className="board">
-          <Square className="Square" id="square00" />
-          <Square className="Square" id="square01" />
-          <Square className="Square" id="square02" />
-          <Square className="Square" id="square10" />
-          <Square className="Square" id="square11" />
-          <Square className="Square" id="square12" />
-          <Square className="Square" id="square20" />
-          <Square className="Square" id="square21" />
-          <Square className="Square" id="square22" />
-          <Reset />
-        </div>
-        <footer>
-          <Message />
+
+
+        <Board className="Board" icon={this.state.playerArray[this.state.turnPointer]}
+        changePlayer={this.changePlayer.bind(this)}/>
+
+
+        <footer className="Footer">
+          <p className="Message"> Player one turn </p>
         </footer>
+
       </div>
     );
   }

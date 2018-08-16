@@ -1,0 +1,23 @@
+.Board {
+  display: inline-grid;
+  grid-gap: 10px;
+  grid-template-columns:  auto auto auto;
+  background-color: lightblue;
+  width: 80vw;
+  height: 50vh;
+  padding: 10px;
+}
+
+.Board > div{
+  background-color: grey;
+  padding: 20%;
+  font-size: 40px;
+  text-align: center;
+}
+ .Square {
+  height: 33%;
+  width: 33%;
+   background-color: white;
+   text-align: center;
+   justify-items: center;
+ }

@@ -1,28 +1,17 @@
 .App {
   text-align: center;
+  display: block;
+  background-color: #afc09a
 }
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.PlayerHolder{
+  display: flex;
+  justify-content: space-around;
 }
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.player{
+  display: flex;
+  flex-direction: row;
 }
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.icon{
+  max-width: 10px;
+  text-align: center;
 }
