@@ -1,17 +1,39 @@
 .App {
   text-align: center;
   display: block;
-  background-color: #afc09a
+  background-color: #afc09a;
+  padding: 20px;
+}
+.Title{
+  margin: 20px;
+  font-size: 5em;
+  font-family: 'comic sans';
 }
 .PlayerHolder{
   display: flex;
-  justify-content: space-around;
-}
-.player{
-  display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
+  align-items: baseline;
+}
+.PlayerHolder > div {
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
 }
 .icon{
-  max-width: 10px;
+  max-width: 25px;
+  max-height: 25px;
   text-align: center;
+  font-size: 1.5em;
+  margin: 10px;
+}
+.playerText{
+  font-size: 1.5em;
+}
+
+.Message{
+  display: inline;
+  padding: 20px;
+  margin-top: 10px;
+  font-size: 2em;
 }

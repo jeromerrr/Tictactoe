@@ -1,10 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import Square from './components/Square.js'
-import Title from './components/title.js'
-import Reset from './components/reset.js'
-import Player from './components/player.js'
-import Message from './components/message.js'
 import Board from './components/board.js'
 
 
@@ -48,8 +43,9 @@ class App extends Component {
   constructor(props){
     super(props)
     this.state = {
-      turnPointer: 1,
-      playerArray: ["X","O"]
+      turnPointer: 0,
+      playerArray: ["X","O"],
+      hasWon: ""
     }
   }
   changePlayer(){
@@ -60,11 +56,26 @@ class App extends Component {
     console.log(temp + ' not');
     console.log(this.state.turnPointer);
   }
-
-  setIcon(e, index){
-    // let tempIcons = this.state.playerArray.slice()
-    // tempIcons[index]= e.target.value
-    // this.setState({playerArray: tempIcons})
+  setWon = (won)=>{
+    this.setState({hasWon:won})
+  }
+  setIcon1(e){
+    let tempArray = this.state.playerArray;
+    tempArray[0]=e.target.value;
+    this.setState({playerArray: tempArray})
+    console.log(tempArray+","+this.props.index+"."+e.target.value+"," + this.state.playerArray)
+  }
+  setIcon2(e){
+    let tempArray = this.state.playerArray;
+    tempArray[1]=e.target.value;
+    this.setState({playerArray: tempArray})
+    console.log(tempArray+","+this.props.index+"."+e.target.value+"," + this.state.playerArray)
+  }
+  printMessage (){
+    let won = this.state.hasWon
+    if(won && won==="draw") return <p className="Message">It's a draw!</p>
+    else if(won) return <p className="Message">{this.state.hasWon} has won!</p>
+    else return <p className="Message">{this.state.playerArray[this.state.turnPointer]}'s turn!</p>
   }
 
   render() {
@@ -78,27 +89,29 @@ class App extends Component {
         <div className="PlayerHolder">
 
           <div className="Player" id="playerOne" >
-            <input className="icon" id="p1icon" value={this.state.playerArray[0]}
-            onChange={this.setIcon.bind(this, 0)}
+            <input className="icon" id="p1icon" value={this.state.value} 
+            onChange={this.setIcon1.bind(this)}
             index={0}/>
-            <p> Player One </p>
+            <p className="playerText"> Player One </p>
           </div>
-
+          <div>
+          {this.printMessage()}
+          </div>
           <div className="Player" id="playerTwo">
-            <input className="icon" id="p2icon" value={this.state.playerArray[1]} onChange={this.setIcon.bind(this, 1)}
+            <input className="icon" id="p2icon" value={this.state.value} onChange={this.setIcon2.bind(this)}
             index="1" />
-            <p> Player Two </p>
+            <p className="playerText"> Player Two </p>
           </div>
 
         </div>
 
 
         <Board className="Board" icon={this.state.playerArray[this.state.turnPointer]}
-        changePlayer={this.changePlayer.bind(this)}/>
+        changePlayer={this.changePlayer.bind(this)} setWon={this.setWon.bind(this)} />
 
 
         <footer className="Footer">
-          <p className="Message"> Player one turn </p>
+          
         </footer>
 
       </div>

@@ -104,7 +104,7 @@ class Board extends Component {
         alert(win+" Wins!")
         console.log(win+" Wins!")
       }
-
+      this.props.setWon(win)
     }
 
   }
@@ -112,17 +112,16 @@ class Board extends Component {
   resetArray(e){
     let empty=[["","",""],["","",""],["","",""]]
     this.setState({boardArray:empty})
+    this.props.setWon("")
   }
 
   render() {
     // let squares = this.state.boardArray.map((Square,i)=>{
     //   return (
     //     this.state.boardArray[i].map((Square,j)=>{
-    //       return (
     //         <Square className="Square" id={`square${i}${j}`} updateValue={this.updateValue} contents={this.state.boardArray[i][j]}
     //         location={this.state.locationArray[i][j]}
     //         />
-    //       )
     //     })
     //   )
     // })
@@ -130,34 +129,34 @@ class Board extends Component {
     return (
       <div>
       <div className="Board">
-        <Square className="Square" id="square00"
+        <Square className="Squares" id="square00"
         updateValue={this.updateValue}
         contents={this.state.boardArray[0][0]}
         location={this.state.locationArray[0][0]}/>
-        <Square className="Square" id="square01" updateValue={this.updateValue} contents={this.state.boardArray[0][1]}
+        <Square className="Squares" id="square01" updateValue={this.updateValue} contents={this.state.boardArray[0][1]}
         location={this.state.locationArray[0][1]}/>
-        <Square className="Square" id="square02" updateValue={this.updateValue} contents={this.state.boardArray[0][2]}
+        <Square className="Squares" id="square02" updateValue={this.updateValue} contents={this.state.boardArray[0][2]}
         location={this.state.locationArray[0][2]}/>
 
-        <Square className="Square" id="square10" updateValue={this.updateValue} contents={this.state.boardArray[1][0]}
+        <Square className="Squares" id="square10" updateValue={this.updateValue} contents={this.state.boardArray[1][0]}
         location={this.state.locationArray[1][0]}/>
-        <Square className="Square" id="square11" updateValue={this.updateValue} contents={this.state.boardArray[1][1]}
+        <Square className="Squares" id="square11" updateValue={this.updateValue} contents={this.state.boardArray[1][1]}
         location={this.state.locationArray[1][1]}/>
-        <Square className="Square" id="square12" updateValue={this.updateValue} contents={this.state.boardArray[1][2]}
+        <Square className="Squares" id="square12" updateValue={this.updateValue} contents={this.state.boardArray[1][2]}
         location={this.state.locationArray[1][2]}/>
 
-        <Square className="Square" id="square20" contents={this.state.boardArray[2][0]} updateValue={this.updateValue}
+        <Square className="Squares" id="square20" contents={this.state.boardArray[2][0]} updateValue={this.updateValue}
         location={this.state.locationArray[2][0]}/>
-        <Square className="Square" id="square21" updateValue={this.updateValue} contents={this.state.boardArray[2][1]}
+        <Square className="Squares" id="square21" updateValue={this.updateValue} contents={this.state.boardArray[2][1]}
         location={this.state.locationArray[2][1]}/>
-        <Square className="Square" id="square22" updateValue={this.updateValue} contents={this.state.boardArray[2][2]}
+        <Square className="Squares" id="square22" updateValue={this.updateValue} contents={this.state.boardArray[2][2]}
         location={this.state.locationArray[2][2]}/>
 
       </div>
 
       <div>
         <button className="Reset" onClick={this.resetArray.bind(this)}>
-        reset button
+        Reset
         </button>
       </div>
 
