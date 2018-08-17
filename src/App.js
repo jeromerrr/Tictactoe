@@ -59,23 +59,18 @@ class App extends Component {
   setWon = (won)=>{
     this.setState({hasWon:won})
   }
-  setIcon1(e){
+  setIcon(e){
     let tempArray = this.state.playerArray;
-    tempArray[0]=e.target.value;
+    let index=Number(e.target.name)
+    tempArray[index]=e.target.value;
     this.setState({playerArray: tempArray})
-    console.log(tempArray+","+this.props.index+"."+e.target.value+"," + this.state.playerArray)
   }
-  setIcon2(e){
-    let tempArray = this.state.playerArray;
-    tempArray[1]=e.target.value;
-    this.setState({playerArray: tempArray})
-    console.log(tempArray+","+this.props.index+"."+e.target.value+"," + this.state.playerArray)
-  }
+
   printMessage (){
     let won = this.state.hasWon
-    if(won && won==="draw") return <p className="Message">It's a draw!</p>
-    else if(won) return <p className="Message">{this.state.hasWon} has won!</p>
-    else return <p className="Message">{this.state.playerArray[this.state.turnPointer]}'s turn!</p>
+    if(won && won==="draw") return <p className="Message">Draw, like an artist!</p>
+    else if(won) return <p className="Message">{this.state.hasWon} won!</p>
+    else return <p className="Message">{this.state.playerArray[this.state.turnPointer]}s turn!</p>
   }
 
   render() {
@@ -89,17 +84,14 @@ class App extends Component {
         <div className="PlayerHolder">
 
           <div className="Player" id="playerOne" >
-            <input className="icon" id="p1icon" value={this.state.value} 
-            onChange={this.setIcon1.bind(this)}
-            index={0}/>
+            <input className="icon" id="p1icon" name="0" value={this.state.value}
+            onChange={this.setIcon.bind(this)}
+            placeholder="X"/>
             <p className="playerText"> Player One </p>
           </div>
-          <div>
-          {this.printMessage()}
-          </div>
+          <div> {this.printMessage()} </div>
           <div className="Player" id="playerTwo">
-            <input className="icon" id="p2icon" value={this.state.value} onChange={this.setIcon2.bind(this)}
-            index="1" />
+            <input className="icon" id="p2icon" name="1" value={this.state.value} onChange={this.setIcon.bind(this)} placeholder="O"/>
             <p className="playerText"> Player Two </p>
           </div>
 
@@ -111,7 +103,7 @@ class App extends Component {
 
 
         <footer className="Footer">
-          
+
         </footer>
 
       </div>

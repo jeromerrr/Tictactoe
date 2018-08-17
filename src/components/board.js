@@ -82,11 +82,12 @@ class Board extends Component {
     let win= this.checkWin()
 
     if(win){
+      alert("The game is over. Press reset")
       return
     }
 
     if (tempArray[X][Y]){
-      console.log("that space is full")
+      alert("That space is full, chose a different one")
     } else {
       tempArray[X][Y]=icon
       this.setState({boardArray: tempArray})
@@ -96,14 +97,14 @@ class Board extends Component {
     win= this.checkWin()
 
     if(win){
-      if(win==="draw"){
-        alert("DRAW")
-        console.log("It's a draw")
-      }
-      else {
-        alert(win+" Wins!")
-        console.log(win+" Wins!")
-      }
+      // if(win==="draw"){
+      //   alert("DRAW")
+      //   console.log("It's a draw")
+      // }
+      // else {
+      //   alert(win+" Wins!")
+      //   console.log(win+" Wins!")
+      // }
       this.props.setWon(win)
     }
 
@@ -116,42 +117,20 @@ class Board extends Component {
   }
 
   render() {
-    // let squares = this.state.boardArray.map((Square,i)=>{
-    //   return (
-    //     this.state.boardArray[i].map((Square,j)=>{
-    //         <Square className="Square" id={`square${i}${j}`} updateValue={this.updateValue} contents={this.state.boardArray[i][j]}
-    //         location={this.state.locationArray[i][j]}
-    //         />
-    //     })
-    //   )
-    // })
+    let squares = this.state.boardArray.map((square,i)=>{
+        return (
+          this.state.boardArray.map((square,j)=>{
+            return (
+              <Square updateValue={this.updateValue} contents={this.state.boardArray[i][j]} location={this.state.locationArray[i][j]}/>
+              )
+            })
+          )
+    })
 
     return (
       <div>
       <div className="Board">
-        <Square className="Squares" id="square00"
-        updateValue={this.updateValue}
-        contents={this.state.boardArray[0][0]}
-        location={this.state.locationArray[0][0]}/>
-        <Square className="Squares" id="square01" updateValue={this.updateValue} contents={this.state.boardArray[0][1]}
-        location={this.state.locationArray[0][1]}/>
-        <Square className="Squares" id="square02" updateValue={this.updateValue} contents={this.state.boardArray[0][2]}
-        location={this.state.locationArray[0][2]}/>
-
-        <Square className="Squares" id="square10" updateValue={this.updateValue} contents={this.state.boardArray[1][0]}
-        location={this.state.locationArray[1][0]}/>
-        <Square className="Squares" id="square11" updateValue={this.updateValue} contents={this.state.boardArray[1][1]}
-        location={this.state.locationArray[1][1]}/>
-        <Square className="Squares" id="square12" updateValue={this.updateValue} contents={this.state.boardArray[1][2]}
-        location={this.state.locationArray[1][2]}/>
-
-        <Square className="Squares" id="square20" contents={this.state.boardArray[2][0]} updateValue={this.updateValue}
-        location={this.state.locationArray[2][0]}/>
-        <Square className="Squares" id="square21" updateValue={this.updateValue} contents={this.state.boardArray[2][1]}
-        location={this.state.locationArray[2][1]}/>
-        <Square className="Squares" id="square22" updateValue={this.updateValue} contents={this.state.boardArray[2][2]}
-        location={this.state.locationArray[2][2]}/>
-
+        {squares}
       </div>
 
       <div>

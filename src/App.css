@@ -1,13 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Permanent+Marker');
 .App {
   text-align: center;
   display: block;
-  background-color: #afc09a;
-  padding: 20px;
+  background-color: #A7333F;
 }
 .Title{
-  margin: 20px;
+  margin: 2px;
   font-size: 5em;
-  font-family: 'comic sans';
+  font-family: 'Permanent Marker', cursive;
+  color: #580C1F;
 }
 .PlayerHolder{
   display: flex;
@@ -21,19 +22,26 @@
   align-items: baseline;
 }
 .icon{
-  max-width: 25px;
-  max-height: 25px;
+  max-width: 30px;
+  max-height: 30px;
   text-align: center;
   font-size: 1.5em;
   margin: 10px;
+  background-color: #C52233;
+  border-color: #580C1F;
 }
 .playerText{
   font-size: 1.5em;
+  color: #580c1f;
+  font-family: 'Gloria Hallelujah', cursive;
 }
 
 .Message{
   display: inline;
-  padding: 20px;
+  padding: 5px;
   margin-top: 10px;
   font-size: 2em;
+  color: #EEB4B3;
+  font-family: 'Gloria Hallelujah', cursive;
 }
+input:focus {outline: none; }

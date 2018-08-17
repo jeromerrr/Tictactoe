@@ -2,23 +2,45 @@
   display: inline-grid;
   grid-gap: 10px;
   grid-template-columns:  repeat(3,1fr);
-  background-color: lightblue;
-  width: 80vw;
-  height: 50vh;
-  padding: 10px;
+  background-color: #74121D;
+  width: 620px;
+  height: 620px;
 }
 
 .Board > div{
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: grey;
-  font-size: 4em;
+  background-color: #A7333F;
+  font-size: 6em;
   flex-grow: initial;
-  
+  color: #EEB4B3;
+  height:200px;
+  width: 200px;
+  font-family: 'Permanent Marker';
 }
+@keyframes fadeIn {
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+}
+
+.squareContent {
+  animation-name: fadeIn;
+  animation-duration: 10s;
+}
+
 button{
-  padding: 5px;
+  padding: 15px;
   margin: 20px;
-  font-size:2em;
+  font-size:1.5em;
+  background-color: #A7333F;
+  border-radius: 50px;
+  border-color: #EEB4B3;
+  color: #EEB4B3;
+  font-family: 'Gloria Hallelujah', cursive;
 }
+button:focus {outline:0;}
