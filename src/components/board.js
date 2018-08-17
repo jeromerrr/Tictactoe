@@ -20,26 +20,7 @@ class Board extends Component {
     }
   }
 
-
-  //NOTE: HIGHER ORDER FUNCTION
-    //maintains state of everything
-    //will contain 'if statements' for WIN, LOSS, TIE and TURN
-
-      // Steps for higher order function:
-      // 1. Check escape conditions - win/loss or tie
-        //**use return to escape function
-      // 2. Check to see if its a valid move (square unoccupied or not)
-      // 3. If valid move, put in array (receiving X, Y values)
-      // 4. Change player turn
-      // 5. Reset option make array value empty & reset player icon array & player pointer to 0
-
-  //onClick - child sending info to parent
-  //then parent checks with higher order function
-
-
-  //each square has a function
-  //squares send info to higher order function
-
+//FUNCTIONS
   checkWin = () => {
       let array=this.state.boardArray
       for(let i =0; i<3;i++){
@@ -74,8 +55,6 @@ class Board extends Component {
       return "draw"
     }
 
-
-
   updateValue = (X,Y) => {
     let icon=this.props.icon
     let tempArray = this.state.boardArray.slice()
@@ -97,14 +76,6 @@ class Board extends Component {
     win= this.checkWin()
 
     if(win){
-      // if(win==="draw"){
-      //   alert("DRAW")
-      //   console.log("It's a draw")
-      // }
-      // else {
-      //   alert(win+" Wins!")
-      //   console.log(win+" Wins!")
-      // }
       this.props.setWon(win)
     }
 
@@ -114,6 +85,7 @@ class Board extends Component {
     let empty=[["","",""],["","",""],["","",""]]
     this.setState({boardArray:empty})
     this.props.setWon("")
+    this.props.resetPlayer()
   }
 
   render() {
@@ -129,15 +101,16 @@ class Board extends Component {
 
     return (
       <div>
-      <div className="Board">
-        {squares}
-      </div>
-
-      <div>
-        <button className="Reset" onClick={this.resetArray.bind(this)}>
-        Reset
-        </button>
-      </div>
+//BOARD SQUARES
+        <div className="Board">
+          {squares}
+        </div>
+//RESET BUTTON
+        <div>
+          <button className="Reset" onClick={this.resetArray.bind(this)}>
+          Reset
+          </button>
+        </div>
 
       </div>
     );

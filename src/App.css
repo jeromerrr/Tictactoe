@@ -3,6 +3,7 @@
   text-align: center;
   display: block;
   background-color: #A7333F;
+  cursor: pointer;
 }
 .Title{
   margin: 2px;
@@ -29,6 +30,7 @@
   margin: 10px;
   background-color: #C52233;
   border-color: #580C1F;
+  border-radius: 50%;
 }
 .playerText{
   font-size: 1.5em;

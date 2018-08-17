@@ -19,6 +19,7 @@
   width: 200px;
   font-family: 'Permanent Marker';
 }
+
 @keyframes fadeIn {
   from{
     opacity: 0;

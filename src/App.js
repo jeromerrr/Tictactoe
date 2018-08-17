@@ -2,6 +2,87 @@ import React, { Component } from 'react';
 import './App.css';
 import Board from './components/board.js'
 
+//NOTE: See below for pseudo-code
+
+class App extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      turnPointer: 0,
+      playerArray: ["X","O"],
+      hasWon: ""
+    }
+  }
+
+//FUNCTIONS:
+  changePlayer(){
+    let temp = this.state.turnPointer
+    console.log(temp)
+    temp = temp ? 0 : 1
+    this.setState({turnPointer: temp})
+    console.log(temp + ' not');
+    console.log(this.state.turnPointer);
+  }
+  setWon = (won)=>{
+    this.setState({hasWon:won})
+  }
+  setIcon(e){
+    let tempArray = this.state.playerArray;
+    let index=Number(e.target.name)
+    tempArray[index]=e.target.value;
+    this.setState({playerArray: tempArray})
+  }
+  resetPlayer(){
+    this.setState({turnPointer:0})
+  }
+  printMessage (){
+    let won = this.state.hasWon
+    if(won && won==="draw") return <p className="Message">Draw, like an artist!</p>
+    else if(won) return <p className="Message">{this.state.hasWon} won!</p>
+    else return <p className="Message">{this.state.playerArray[this.state.turnPointer]}s turn!</p>
+  }
+
+
+  render() {
+    return (
+      <div className="App">
+//HEADER
+        <h1 className="Title">
+          Tic Tac Toe!
+        </h1>
+//PLAYER 1
+        <div className="PlayerHolder">
+          <div className="Player" id="playerOne" >
+            <input className="icon" id="p1icon" name="0"
+              value={this.state.value}
+              onChange={this.setIcon.bind(this)}
+              placeholder="X"
+              />
+            <p className="playerText"> Player One </p>
+          </div>
+//MESSAGE
+          <div> {this.printMessage()} </div>
+//PLAYER 2
+          <div className="Player" id="playerTwo">
+            <input className="icon" id="p2icon" name="1"
+                value={this.state.value} onChange={this.setIcon.bind(this)} placeholder="O"
+                />
+            <p className="playerText"> Player Two </p>
+          </div>
+        </div>
+//BOARD
+        <Board className="Board"
+          icon={this.state.playerArray[this.state.turnPointer]}
+          changePlayer={this.changePlayer.bind(this)} setWon={this.setWon.bind(this)} resetPlayer={this.resetPlayer.bind(this)}
+          />
+
+      </div>
+    );
+  }
+}
+
+export default App;
+
 
 //players have an array each, storing values of player icons in player component
 //one smart component - board
@@ -38,77 +119,3 @@ import Board from './components/board.js'
 //NOTE: PLAYER COMPONENT
   //Changes background color based on player's turn
   //Form field to take player's icon and store it in player's array
-
-class App extends Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      turnPointer: 0,
-      playerArray: ["X","O"],
-      hasWon: ""
-    }
-  }
-  changePlayer(){
-    let temp = this.state.turnPointer
-    console.log(temp)
-    temp = temp ? 0 : 1
-    this.setState({turnPointer: temp})
-    console.log(temp + ' not');
-    console.log(this.state.turnPointer);
-  }
-  setWon = (won)=>{
-    this.setState({hasWon:won})
-  }
-  setIcon(e){
-    let tempArray = this.state.playerArray;
-    let index=Number(e.target.name)
-    tempArray[index]=e.target.value;
-    this.setState({playerArray: tempArray})
-  }
-
-  printMessage (){
-    let won = this.state.hasWon
-    if(won && won==="draw") return <p className="Message">Draw, like an artist!</p>
-    else if(won) return <p className="Message">{this.state.hasWon} won!</p>
-    else return <p className="Message">{this.state.playerArray[this.state.turnPointer]}s turn!</p>
-  }
-
-  render() {
-    return (
-      <div className="App">
-
-        <h1 className="Title">
-          Tic Tac Toe!
-        </h1>
-
-        <div className="PlayerHolder">
-
-          <div className="Player" id="playerOne" >
-            <input className="icon" id="p1icon" name="0" value={this.state.value}
-            onChange={this.setIcon.bind(this)}
-            placeholder="X"/>
-            <p className="playerText"> Player One </p>
-          </div>
-          <div> {this.printMessage()} </div>
-          <div className="Player" id="playerTwo">
-            <input className="icon" id="p2icon" name="1" value={this.state.value} onChange={this.setIcon.bind(this)} placeholder="O"/>
-            <p className="playerText"> Player Two </p>
-          </div>
-
-        </div>
-
-
-        <Board className="Board" icon={this.state.playerArray[this.state.turnPointer]}
-        changePlayer={this.changePlayer.bind(this)} setWon={this.setWon.bind(this)} />
-
-
-        <footer className="Footer">
-
-        </footer>
-
-      </div>
-    );
-  }
-}
-
-export default App;
