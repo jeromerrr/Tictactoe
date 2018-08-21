@@ -20,7 +20,7 @@ class Board extends Component {
     }
   }
 
-//FUNCTIONS
+
   checkWin = () => {
       let array=this.state.boardArray
       for(let i =0; i<3;i++){
@@ -101,11 +101,10 @@ class Board extends Component {
 
     return (
       <div>
-//BOARD SQUARES
         <div className="Board">
           {squares}
         </div>
-//RESET BUTTON
+
         <div>
           <button className="Reset" onClick={this.resetArray.bind(this)}>
           Reset

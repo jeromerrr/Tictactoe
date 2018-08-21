@@ -1,10 +1,10 @@
 .Board {
   display: inline-grid;
   grid-gap: 10px;
-  grid-template-columns:  repeat(3,1fr);
+  grid-template-columns:  repeat(9,1fr);
   background-color: #74121D;
-  width: 620px;
-  height: 620px;
+  width: 90vw;
+  height: 80vh;
 }
 
 .Board > div{
@@ -15,8 +15,8 @@
   font-size: 6em;
   flex-grow: initial;
   color: #EEB4B3;
-  height:200px;
-  width: 200px;
+  height:25vh;
+  width: 10vw;
   font-family: 'Permanent Marker';
 }
 
