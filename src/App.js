@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import Board from './components/board.js'
 
-//NOTE: See below for pseudo-code
-
 class App extends Component {
   constructor(props){
     super(props)
