@@ -20,7 +20,7 @@ class Board extends Component {
     }
   }
 
-//FUNCTIONS
+
   checkWin = () => {
       let array=this.state.boardArray
       for(let i =0; i<3;i++){

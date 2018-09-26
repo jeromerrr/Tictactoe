@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Board from './components/board.js'
+import Board from './components/3dboard.js'
 
 class App extends Component {
   constructor(props){
@@ -48,7 +48,6 @@ class App extends Component {
         <h1 className="Title">
           Tic Tac Toe!
         </h1>
-
         <div className="PlayerHolder">
           <div className="Player" id="playerOne" >
             <input className="icon" id="p1icon" name="0"
