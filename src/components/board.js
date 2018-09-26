@@ -101,11 +101,11 @@ class Board extends Component {
 
     return (
       <div>
-//BOARD SQUARES
+
         <div className="Board">
           {squares}
         </div>
-//RESET BUTTON
+
         <div>
           <button className="Reset" onClick={this.resetArray.bind(this)}>
           Reset

@@ -46,11 +46,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-//HEADER
+
         <h1 className="Title">
           Tic Tac Toe!
         </h1>
-//PLAYER 1
+
         <div className="PlayerHolder">
           <div className="Player" id="playerOne" >
             <input className="icon" id="p1icon" name="0"
@@ -60,9 +60,9 @@ class App extends Component {
               />
             <p className="playerText"> Player One </p>
           </div>
-//MESSAGE
+
           <div> {this.printMessage()} </div>
-//PLAYER 2
+
           <div className="Player" id="playerTwo">
             <input className="icon" id="p2icon" name="1"
                 value={this.state.value} onChange={this.setIcon.bind(this)} placeholder="O"
@@ -70,7 +70,7 @@ class App extends Component {
             <p className="playerText"> Player Two </p>
           </div>
         </div>
-//BOARD
+
         <Board className="Board"
           icon={this.state.playerArray[this.state.turnPointer]}
           changePlayer={this.changePlayer.bind(this)} setWon={this.setWon.bind(this)} resetPlayer={this.resetPlayer.bind(this)}
