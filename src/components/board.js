@@ -101,6 +101,7 @@ class Board extends Component {
 
     return (
       <div>
+
         <div className="Board">
           {squares}
         </div>
